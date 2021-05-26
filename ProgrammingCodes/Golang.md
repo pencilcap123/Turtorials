@@ -39,10 +39,13 @@ true | false.  var b bool = true
 ## 变量
 * 变量申明
 1. `var identifier[,identifier2] type`
+   
    指定类型声明，若没有初始化，会自动初始化为零值，整型就是0，布尔就是false，字符串为""，其他为nil
 2. `var identifier[,identifier2] = value[,value2]`
+   
    声明一个变量，并根据值自行判断类型
 3. `identifier[,identifier2] := value[,value2] `
+   
    声明一个变量，并自动推断类型
 
 * 指针

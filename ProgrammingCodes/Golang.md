@@ -37,14 +37,13 @@ true | false.  var b bool = true
 指针Pointer、数组、结构体struct、Channel类型、函数类型、切片类型、接口类型、Map类型
 
 ## 变量
-* `var identifier[,identifier2] type`
-指定类型声明，若没有初始化，会自动初始化为零值，整型就是0，布尔就是false，字符串为""，其他为nil
-
-* `var identifier[,identifier2] = value[,value2]`
-声明一个变量，并根据值自行判断类型
-
-* `identifier[,identifier2] := value[,value2] `
-声明一个变量，并自动推断类型
+* 变量申明
+1. `var identifier[,identifier2] type`
+   指定类型声明，若没有初始化，会自动初始化为零值，整型就是0，布尔就是false，字符串为""，其他为nil
+2. `var identifier[,identifier2] = value[,value2]`
+   声明一个变量，并根据值自行判断类型
+3. `identifier[,identifier2] := value[,value2] `
+   声明一个变量，并自动推断类型
 
 * 指针
 1. 值类型的变量直接指向存在的内存中的值

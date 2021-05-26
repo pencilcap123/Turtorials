@@ -53,3 +53,35 @@ true | false.  var b bool = true
 2. 引用类型变量存储的是变量的内存地址
 3. 可以使用&identifier来获取指针ptr，而对指针而言是要\*ptr来获取实际指针指向的值
 
+## 常量
+1. 常量声明 
+`const c_name1[,c_name2] [type] = value1[, value2]`
+2. 常量枚举 
+```go
+const (
+   Unknown = 0
+   Female = 1
+   Male = 2
+)
+```
+3. iota，特殊常量，在const关键字出现时将被重置为0，const中每新增一行常量iota计数一次
+```
+package main
+
+import "fmt"
+
+func main() {
+    const (
+            a = iota   //0
+            b          //1
+            c          //2
+            d = "ha"   //独立值，iota += 1
+            e          //"ha"   iota += 1
+            f = 100    //iota +=1
+            g          //100  iota +=1
+            h = iota   //7,恢复计数
+            i          //8
+    )
+    fmt.Println(a,b,c,d,e,f,g,h,i)
+}
+```

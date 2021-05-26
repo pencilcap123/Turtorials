@@ -64,7 +64,7 @@ const (
    Male = 2
 )
 ```
-3. iota，特殊常量，在const关键字出现时将被重置为0，const中每新增一行常量iota计数一次
+3. iota，特殊常量，在const关键字出现时将被重置为0，const中每新增一行常量iota计数一次，中间若出现其他赋值语句，则直到重新出现iota赋值语句才恢复iota的数据输出
 ```golang
 package main
 
@@ -83,5 +83,6 @@ func main() {
             i          //8
     )
     fmt.Println(a,b,c,d,e,f,g,h,i)
+    // 0 1 2 ha ha 100 100 7 8
 }
 ```

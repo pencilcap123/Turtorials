@@ -65,7 +65,7 @@ const (
 )
 ```
 3. iota，特殊常量，在const关键字出现时将被重置为0，const中每新增一行常量iota计数一次
-```
+```golang
 package main
 
 import "fmt"

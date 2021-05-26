@@ -23,6 +23,7 @@ func main() { // { 无法单独成行！！
 * * 常量、变量、类型、函数名、结构字段等等，若大写字母开头，则为外部包代码可访问，类似public，如小写字母开头，则包外不可见，但则包内部可见，类似protected
 * * 字母、数字、下划线组合，但开头必须为字母或者下划线
 * 关键字
-* * 
+* * ![image](https://user-images.githubusercontent.com/41630875/119616940-d02aaf80-be33-11eb-96e5-9fe8dcd50fff.png)
+
 
 

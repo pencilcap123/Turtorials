@@ -322,3 +322,50 @@ arr := []int{0:1,2:5} // 可以通过索引指定元素值
 
 指针数组
 `var ptr [size]*int`
+
+## 结构体
+结构体定义
+```go
+type struct_variable_type struct {
+    member definition
+    member definition
+    member definition
+    ...
+    member definition
+}
+```
+
+结构体变量声明
+`variable_name := structure_variable_type {value1, value2...valuen}`
+`variable_name := structure_variable_type { key1: value1, key2: value2..., keyn: valuen}` 
+
+结构体构造&结构体指针
+```
+type Books struct {
+	title string
+	author string
+	subject string
+	book_id int
+}
+
+func structTest() {
+	fmt.Println(Books{"Go语言", "xuzhe", "基础教程", 123})
+	fmt.Println(Books{
+		title:   "Java语言",
+		author:  "xuzhe",
+		subject: "从入门到放弃",
+		book_id: 1234,
+	})
+	fmt.Println(Books{title: "Python语言", author: "xuzhe"})
+
+	var book1 Books
+	book1.title = "C语言"
+	book1.author = "xuzhe2"
+	book1.subject = "字典"
+	fmt.Println(book1)
+
+	bookPtr := &book1
+	bookPtr.subject = "字典2"  // 对于结构体指针，直接使用.即可访问成员
+	fmt.Println(*bookPtr)
+}
+```

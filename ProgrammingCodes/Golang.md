@@ -142,3 +142,82 @@ select {
 2. 所有chan都会被求值
 3. 所有被发送的表达式都会被求值
 4. 每次只会随机执行一个可执行的通信，其他的被忽略。如果一个都没有，会执行default，如果连default都没有，会阻塞。
+
+## 循环语句
+* for
+for循环存在3中写法，init为赋值表达式，condition为逻辑表达式，post为后置表达式
+`for init; condition; post {}`
+`for condition {}`
+`for {}`
+
+样例1，对map就行迭代
+```go
+for key,value := range oldMap {
+    newMap[key] = value
+}
+```
+
+* break
+break支持中断当前循环，并直接中断到label标记的循环
+```go
+	fmt.Println("----break without label----")
+	for i:= 1; i <= 3; i++ {
+		fmt.Printf("i: %d\n", i)
+		for i2 := 11; i2<= 13; i2++ {
+			fmt.Printf("i2: %d\n", i2)
+		}
+	}
+
+	fmt.Println("----break WITH label----")
+	re:
+		for i := 1; i <= 3; i++ {
+			fmt.Printf("i: %d\n", i)
+			for i2 := 11; i2 <= 13; i2++ {
+				fmt.Printf("i2: %d\n", i2)
+				break re
+			}
+		}
+```
+
+* continue
+continue支持跳过当次循环，并直接跳转到label标记的循环，继续开始
+```go
+	// 不使用标记
+	fmt.Println("---- continue ---- ")
+	for i := 1; i <= 3; i++ {
+		fmt.Printf("i: %d\n", i)
+		for i2 := 11; i2 <= 13; i2++ {
+			fmt.Printf("i2: %d\n", i2)
+			continue
+		}
+	}
+
+	// 使用标记
+	fmt.Println("---- continue label ----")
+	re2:
+		for i := 1; i <= 3; i++ {
+			fmt.Printf("i: %d\n", i)
+			for i2 := 11; i2 <= 13; i2++ {
+				fmt.Printf("i2: %d\n", i2)
+				continue re2
+			}
+		}
+```
+
+* goto
+goto支持跳过本次循环并回到循环开始语句loop处
+```go
+	/* 定义局部变量 */
+	var a int = 10
+
+	/* 循环 */
+	LOOP: for a < 20 {
+		if a == 15 {
+			/* 跳过迭代 */
+			a = a + 1
+			goto LOOP
+		}
+		fmt.Printf("a的值为 : %d\n", a)
+		a++
+	}
+```

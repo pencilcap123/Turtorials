@@ -224,3 +224,37 @@ goto支持跳过本次循环并回到循环开始语句loop处
 		a++
 	}
 ```
+
+## 函数
+```go
+func function_name( [parameter list] ) [return_types] {
+    function body
+}
+```
+
+* 值传递与引用传递
+```go
+func main() {
+	var1 := 1
+	var2 := 2
+	fmt.Println("swap init", var1, var2)
+	swap1(var1, var2)
+	fmt.Println("swap result", var1, var2)
+	swap2(&var1, &var2)
+	fmt.Println("swap result", var1, var2)
+}
+
+func swap1(x int, y int) {
+	var tmp int
+	tmp = x
+	x = y
+	y = tmp
+}
+
+func swap2(x *int, y *int)  {
+	var tmp int
+	tmp = *x
+	*x = *y
+	*y = tmp
+}
+```

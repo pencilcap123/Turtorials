@@ -293,3 +293,32 @@ func sum(a, b int) int {
    return a + b;
 }
 ```
+
+## 数组
+go语言的数组索引编号也是从零开始的
+`var variable_name [size] variable_type`
+
+```go
+var arr = [2]int{1,2}
+arr := [2]int{1,2}
+
+arr := [...]int[1,2] // 编译器自动推断数组长度
+arr := []int[1,2] // 编译器自动推断数组长度
+
+arr := [3]int{0:1,2:5} // 可以通过索引指定元素值
+arr := []int{0:1,2:5} // 可以通过索引指定元素值
+```
+
+## 指针
+指针变量初始值为nil
+```go
+	var a = 10
+	fmt.Println("address for var is ", &a)
+
+	var aPtr *int
+	aPtr = &a
+	fmt.Println("prt aPtr is ", aPtr, "value is ", *aPtr)
+```
+
+指针数组
+`var ptr [size]*int`

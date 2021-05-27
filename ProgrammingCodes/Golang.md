@@ -158,6 +158,7 @@ for key,value := range oldMap {
 ```
 
 * break
+
 break支持中断当前循环，并直接中断到label标记的循环
 ```go
 	fmt.Println("----break without label----")
@@ -180,6 +181,7 @@ break支持中断当前循环，并直接中断到label标记的循环
 ```
 
 * continue
+
 continue支持跳过当次循环，并直接跳转到label标记的循环，继续开始
 ```go
 	// 不使用标记
@@ -205,6 +207,7 @@ continue支持跳过当次循环，并直接跳转到label标记的循环，继�
 ```
 
 * goto
+
 goto支持跳过本次循环并回到循环开始语句loop处
 ```go
 	/* 定义局部变量 */

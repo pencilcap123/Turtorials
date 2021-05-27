@@ -334,7 +334,9 @@ type struct_variable_type struct {
 ```
 
 结构体变量声明
+
 `variable_name := structure_variable_type {value1, value2...valuen}`
+
 `variable_name := structure_variable_type { key1: value1, key2: value2..., keyn: valuen}` 
 
 结构体构造&结构体指针

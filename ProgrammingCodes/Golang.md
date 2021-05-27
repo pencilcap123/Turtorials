@@ -94,3 +94,51 @@ func main() {
 * 位运算符：& | ^ >> <<
 * 赋值运算符：= += -= \*= /= %= <<= >>= &= ^= |=
 * 其他：&a返回变量地址、\*a指针变量
+
+## 条件语句
+* if
+```go
+if 布尔表达式 {
+   /* do something while true */
+}
+
+if 布尔表达式 {
+   /* 在布尔表达式为 true 时执行 */
+} else {
+  /* 在布尔表达式为 false 时执行 */
+}
+```
+
+* switch
+```go
+switch var1 {
+    case val1:
+        ...
+    case val2:
+        ...
+    case val3,val4,val5;
+        ...
+    case val6:
+        fallthrough // 不加fallthrough默认直接break
+    default:
+        ...
+}
+```
+
+* select
+select常用于通信控制，每个case必须是一个通信操作，发送或者接口。select随机执行一个可运行的case，若无case可运行，将阻塞直到有case可运行。默认子句总是可运行的，默认字句将在无case可运行的时候执行。
+```go
+select {
+    case communication clause  :
+       statement(s);      
+    case communication clause  :
+       statement(s);
+    /* 你可以定义任意数量的 case */
+    default : /* 可选 */
+       statement(s);
+}
+```
+1. 每个case都必须为chan
+2. 所有chan都会被求值
+3. 所有被发送的表达式都会被求值
+4. 每次只会随机执行一个可执行的通信，其他的被忽略。如果一个都没有，会执行default，如果连default都没有，会阻塞。

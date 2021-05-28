@@ -522,9 +522,17 @@ func interfaceTest() {
 	var phone Phone
 
 	phone = new(Nokia)
-	phone.call()
+	phone.call() //Nokia call
+
+	nokia := phone
 
 	phone = new(IPhone)
-	phone.call()
+	phone.call() //IPhone call
+
+	iPhone := phone
+
+	nokia = iPhone
+	nokia.call() //IPhone call
 }
 ```
+

@@ -369,3 +369,28 @@ func structTest() {
 	fmt.Println(*bookPtr)
 }
 ```
+
+## 切片
+func sliceTest() {
+	arr := [5]int{1,2,3,4,5}
+	s1 := arr[:]  // 从数组获取切片
+	fmt.Println(s1, len(s1), cap(s1), s1[:2], s1[2:], s1[2:4]) // 切片的截取
+	s1 = append(s1, 6,7,8) // 切片追加
+	fmt.Println(s1, len(s1), cap(s1)) // 获取切片长度、当前容量
+
+	var s4 []int
+	copy(s1, s4) // 拷贝切片
+	fmt.Println(s4, len(s4), cap(s4))
+
+	s2 := make([]int, 4, 6) // 创建切片，非nil
+	fmt.Println(s2, len(s2), cap(s2))
+	if s2 == nil {
+		fmt.Printf("切片是空的")
+	}
+
+	var s3 []int  // 未指定长度的切片是nil
+	fmt.Println(s3, len(s3), cap(s3))
+	if s3 == nil {
+		fmt.Printf("切片是空的")
+	}
+}

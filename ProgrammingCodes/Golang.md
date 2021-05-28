@@ -371,6 +371,7 @@ func structTest() {
 ```
 
 ## 切片
+```go
 func sliceTest() {
 	arr := [5]int{1,2,3,4,5}
 	s1 := arr[:]  // 从数组获取切片
@@ -394,3 +395,4 @@ func sliceTest() {
 		fmt.Printf("切片是空的")
 	}
 }
+```

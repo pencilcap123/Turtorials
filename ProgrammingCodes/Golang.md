@@ -396,3 +396,30 @@ func sliceTest() {
 	}
 }
 ```
+
+## range关键字
+```go
+func rangeTest() {
+	nums := []int{2,3,4}
+	sum := 0
+	for _, num := range nums {
+		sum += num
+	}
+	fmt.Println("sum is", sum)
+
+	for idx, num := range nums {
+		if num == 3 {
+			fmt.Println("index:", idx)
+		}
+	}
+
+	kvs := map[string]string{"a":"apple", "b":"banana"}
+	for k, v := range kvs {
+		fmt.Println("k:", k, "v:", v)
+	}
+
+	for idx, ch := range "go lang" {
+		fmt.Println("idx:", idx, "ch:", ch)
+	}
+}
+```

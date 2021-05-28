@@ -613,3 +613,14 @@ func goroutineTest() {
 	saySomething("hello")
 }
 ```
+
+### channel
+* 定义：
+chan适用于传递数据的数据结构，可用于多个goroutine见传递指定类型的数据进行同步与通讯，操作符<-用于指定方向，发送或接受，未指定防线则为双向通道。
+```go
+ch <- v // 发送v到ch
+v:= <- ch // 从ch读取数据，赋值给v
+```
+* 声明
+`ch := make(chan type)` // 默认通道不带缓冲区，发送端不需要等待接收端获取数据
+`ch := make(chan type, buffer_size)` // 带有缓冲区，缓冲区满，则发送端无法再发送数据

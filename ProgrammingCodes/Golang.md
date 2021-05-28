@@ -483,9 +483,9 @@ type struct_name struct {
 	// some definitions
 }
 
-func (variable struct_name) method_name1() [return_type] {
+func (struct_name_variable struct_name) method_name1() [return_type] {
 }
 
-func (variable struct_name) method_name2() [return_type] {
+func (struct_name_variable struct_name) method_name2() [return_type] {
 }
 ```

@@ -427,6 +427,6 @@ func rangeTest() {
 ## map
 * 定义
 1. 声明变量，默认值为nil
-`var map_variable map[key_type]value_type`
+> `var map_variable map[key_type]value_type`
 2. 使用make，默认非nil
-`map_variable := make(map[key_type]value_type)`
+> `map_variable := make(map[key_type]value_type)`

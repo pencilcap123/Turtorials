@@ -472,3 +472,20 @@ func typeConversion() {
 
 ## 接口interface
 接口中定义一组方法签名，任何其他类型只要实现了这些方法就是实现了这个接口
+```go
+type interface_name interface {
+	method_name1 [return_type]
+	method_name2 [return_type]
+	method....
+}
+
+type struct_name struct {
+	// some definitions
+}
+
+func (variable struct_name) method_name1() [return_type] {
+}
+
+func (variable struct_name) method_name2() [return_type] {
+}
+```

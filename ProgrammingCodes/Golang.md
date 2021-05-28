@@ -380,7 +380,7 @@ func sliceTest() {
 	fmt.Println(s1, len(s1), cap(s1)) // 获取切片长度、当前容量
 
 	var s4 []int
-	copy(s1, s4) // 拷贝切片
+	copy(s1, s4) // 拷贝切片，拷贝长度为s1、s4的len的最小值，这里的代码拷贝长度为0，因为s4长度为0.
 	fmt.Println(s4, len(s4), cap(s4))
 
 	s2 := make([]int, 4, 6) // 创建切片，非nil
@@ -389,7 +389,7 @@ func sliceTest() {
 		fmt.Printf("切片是空的")
 	}
 
-	var s3 []int  // 未指定长度的切片是nil
+	var s3 []int  // 未指定长度的切片是nil，但nil的切片可以append元素
 	fmt.Println(s3, len(s3), cap(s3))
 	if s3 == nil {
 		fmt.Printf("切片是空的")
@@ -423,3 +423,10 @@ func rangeTest() {
 	}
 }
 ```
+
+## map
+* 定义
+1. 声明变量，默认值为nil
+`var map_variable map[key_type]value_type`
+2. 使用make，默认非nil
+`map_variable := make(map[key_type]value_type)`

@@ -536,3 +536,59 @@ func interfaceTest() {
 }
 ```
 
+## 异常处理
+go内置的error类型是个interface，定义如下：
+```go
+type error interface {
+	Error() string
+}
+```
+
+样例代码
+```go
+type DivideError struct {
+	dividee int
+	divider int
+}
+
+func (de *DivideError) Error() string {// 自己创建异常
+	strFormat := `
+			Cannot proceed, the divider is zero.
+			dividee: %d
+			divider: 0
+		`
+
+	return fmt.Sprintf(strFormat, de.dividee)
+}
+
+func Divide(dividee int, divider int) (result int, errorMsg string) {
+	if divider == 0 {
+		errorInfo := DivideError{
+			dividee: dividee,
+			divider: divider,
+		}
+		errorMsg = errorInfo.Error()
+	} else {
+		result = dividee / divider
+	}
+
+	return
+}
+
+func createError() error {// 使用errors包创建异常
+	return errors.New("I create an error")
+}
+
+func errorTest() {
+	if result, errorMsg := Divide(100, 10); errorMsg == "" {
+		fmt.Println("divide result is", result)
+	}
+
+	if _, errorMsg := Divide(100, 0); errorMsg != "" {
+		fmt.Println("error is", errorMsg)
+	}
+
+	fmt.Println("error is", createError())
+}
+
+```

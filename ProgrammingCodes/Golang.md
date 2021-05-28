@@ -342,10 +342,17 @@ type struct_variable_type struct {
 结构体构造&结构体指针
 ```
 type Books struct {
-	title string
-	author string
+	title   string
+	author  string
 	subject string
 	book_id int
+}
+
+/**
+结构体内部方法定义
+*/
+func (book Books) price() float32 {
+	return float32(book.book_id) / 10
 }
 
 func structTest() {
@@ -362,10 +369,11 @@ func structTest() {
 	book1.title = "C语言"
 	book1.author = "xuzhe2"
 	book1.subject = "字典"
-	fmt.Println(book1)
+	book1.book_id = 123
+	fmt.Println(book1, "price", book1.price())
 
 	bookPtr := &book1
-	bookPtr.subject = "字典2"  // 对于结构体指针，直接使用.即可访问成员
+	bookPtr.subject = "字典2" // 对于结构体指针，直接使用.即可访问成员
 	fmt.Println(*bookPtr)
 }
 ```

@@ -469,3 +469,6 @@ func typeConversion() {
 	fmt.Println("mean值为: ", mean)
 }
 ```
+
+## 接口interface
+接口中定义一组方法签名，任何其他类型只要实现了这些方法就是实现了这个接口

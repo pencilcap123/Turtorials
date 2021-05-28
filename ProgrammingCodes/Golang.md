@@ -497,3 +497,34 @@ func (struct_name_variable struct_name) method_name1() [return_type] {
 func (struct_name_variable struct_name) method_name2() [return_type] {
 }
 ```
+
+样例代码
+```go
+type Phone interface {
+	call()
+}
+
+type Nokia struct {
+}
+
+func (phone Nokia) call() {
+	fmt.Println("Nokia call")
+}
+
+type IPhone struct {
+}
+
+func (phone IPhone) call() {
+	fmt.Println("IPhone call")
+}
+
+func interfaceTest() {
+	var phone Phone
+
+	phone = new(Nokia)
+	phone.call()
+
+	phone = new(IPhone)
+	phone.call()
+}
+```

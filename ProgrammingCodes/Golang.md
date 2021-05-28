@@ -457,3 +457,15 @@ func mapTest() {
 	fmt.Println(countryMap)
 }
 ```
+
+## 类型转化
+```go
+func typeConversion() {
+	sum := 17
+	count := 5
+	var mean float32
+
+	mean = float32(sum) / float32(count) // 操作符两侧必须类型一致
+	fmt.Println("mean值为: ", mean)
+}
+```

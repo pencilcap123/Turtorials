@@ -430,3 +430,30 @@ func rangeTest() {
 > `var map_variable map[key_type]value_type`
 2. 使用make，默认非nil
 > `map_variable := make(map[key_type]value_type)`
+
+```go
+func mapTest() {
+	var countryMap map[string]string     // 声明
+	countryMap = make(map[string]string) // 初始化，未初始化的map不能使用
+
+	countryMap["France"] = "巴黎"
+	countryMap["Italy"] = "罗马"
+	countryMap["Japan"] = "东京"
+	countryMap["India"] = "新德里"
+
+	for country := range countryMap {
+		fmt.Println("Capital of", country, "is", countryMap[country])
+	}
+
+	test := "American"
+	capital, ok := countryMap[test]
+	if ok {
+		fmt.Println("Capital of", test, "is", capital)
+	} else {
+		fmt.Println(test, "not exist")
+	}
+
+	delete(countryMap, "France")
+	fmt.Println(countryMap)
+}
+```

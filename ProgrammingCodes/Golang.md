@@ -616,14 +616,58 @@ func goroutineTest() {
 
 ### channel
 * 定义：
-
-chan适用于传递数据的数据结构，可用于多个goroutine见传递指定类型的数据进行同步与通讯，操作符<-用于指定方向，发送或接受，未指定防线则为双向通道。
-```go
-ch <- v // 发送v到ch
-v:= <- ch // 从ch读取数据，赋值给v
-```
+> chan适用于传递数据的数据结构，可用于多个goroutine见传递指定类型的数据进行同步与通讯，操作符<-用于指定方向，发送或接受，未指定防线则为双向通道。
+> ```go
+> ch <- v // 发送v到ch
+> v:= <- ch // 从ch读取数据，赋值给v
+> ```
 * 声明
-
 `ch := make(chan type)` // 默认通道不带缓冲区，发送端会阻塞直到接收端获取了数据，才能再次发送数据
-
 `ch := make(chan type, buffer_size)` // 带有缓冲区，缓冲区满，则发送端无法再发送数据
+
+* 样例代码
+```go
+func sum2Chan(s []int, c chan int) {
+	sum := 0
+	for _, v := range s {
+		sum += v
+	}
+	c <- sum
+}
+
+func chanTest() {
+	s := []int{7, 2, 8, -9, 4, 0}
+
+	c := make(chan int)
+	go sum2Chan(s[:len(s)/2], c)
+	go sum2Chan(s[len(s)/2:], c)
+
+	x, y := <-c, <-c
+	fmt.Println("chan sum result is", x, y, x+y)
+	close(c) // 关闭channel
+
+	ch := make(chan int, 2)
+	ch <- 1
+	ch <- 2
+
+	v, ok := <-ch
+	fmt.Println(v, ok)
+	v, ok = <-ch
+	fmt.Println(v, ok)
+	close(ch) // 通道关闭后，再次读取，ok值为false
+	v, ok = <-ch
+	fmt.Println(v, ok)
+
+	ch = make(chan int, 10)
+	for i := 0; i < 9; i++ {
+		ch <- i
+	}
+	close(ch) // 通道关闭后，通道中数据全部读取完毕就会自动退出循环
+
+	for value := range ch {
+		fmt.Println(value)
+	}
+}
+```
+
+

@@ -592,3 +592,24 @@ func errorTest() {
 }
 
 ```
+
+## 并发
+### goroutine
+goroutine是轻量级线程，由Golang运行时管理，使用语法如下：
+
+`go func_name(vars)`
+
+在函数前添加go关键字即可使用goroutine运行该方法。同一个程序中的所有goroutine共享同一个地址空间。
+```
+func saySomething(words string) {
+	for i := 0; i < 5; i++ {
+		time.Sleep(100 * time.Millisecond)
+		fmt.Println(words)
+	}
+}
+
+func goroutineTest() {
+	go saySomething("world")
+	saySomething("hello")
+}
+```
